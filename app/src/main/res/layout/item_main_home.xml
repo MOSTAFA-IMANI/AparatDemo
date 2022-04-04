@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/item_main_home_card_radius"
+        android:layout_margin="@dimen/item_main_home_margin"
         >
-        <TextView
-            android:id="@+id/text_view_category_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/image_view"
-            android:layout_margin="8dp"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:textColor="?colorSecondaryVariant"
-            tools:text=" ویژه های آپارات"
-            android:layout_gravity="right"
-            android:textSize="18dp"
-            />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_horizontal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_video_main_home" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="?colorSecondary"
+            >
+
+            <TextView
+                android:id="@+id/text_view_category_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/image_view"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/item_main_home_text_group_margin"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="?colorOnSecondary"
+                android:textSize="18dp"
+                tools:text=" ویژه های آپارات" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/item_main_home_horizontal_recycler_margin"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_video_main_home" />
 
 
-
-
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

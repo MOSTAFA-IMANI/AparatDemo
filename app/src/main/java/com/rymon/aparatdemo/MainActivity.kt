@@ -13,8 +13,6 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.rymon.aparatdemo.databinding.ActivityMainBinding
-import com.rymon.aparatdemo.databinding.FragmentLoginBinding
-import com.rymon.aparatdemo.ui.search.SearchFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupInitializeToolbar()
         setupInitializeBottomNavigation()
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding.apply {
             userButton.setOnClickListener{
@@ -65,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.searchFragment,R.id.searchFragment2)
+            setOf(R.id.TestFragment, R.id.searchFragment,R.id.mainHomeFragment)
         )
 
 

@@ -28,8 +28,6 @@ class MainHomeFragment : Fragment(R.layout.fragment_main_home),
         initRecycler(adapter)
         initViewModel(adapter)
         addLoadStateListener(adapter)
-
-
         setHasOptionsMenu(true)
     }
 

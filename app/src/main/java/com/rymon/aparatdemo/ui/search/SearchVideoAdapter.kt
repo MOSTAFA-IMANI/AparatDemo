@@ -12,7 +12,7 @@ import com.rymon.aparatdemo.data.search.Videobysearch
 import com.rymon.aparatdemo.databinding.ItemSearchedVideoBinding
 
 class SearchVideoAdapter(private val listener: OnItemClickListener) :
-    PagingDataAdapter<Videobysearch, SearchVideoAdapter.VideoViewHolder>(PHOTO_COMPARATOR) {
+    PagingDataAdapter<Videobysearch, SearchVideoAdapter.VideoViewHolder>(VIDEO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding =
@@ -63,7 +63,7 @@ class SearchVideoAdapter(private val listener: OnItemClickListener) :
     }
 
     companion object {
-        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<Videobysearch>() {
+        private val VIDEO_COMPARATOR = object : DiffUtil.ItemCallback<Videobysearch>() {
             override fun areItemsTheSame(oldItem: Videobysearch, newItem: Videobysearch) =
                 oldItem.id == newItem.id
 

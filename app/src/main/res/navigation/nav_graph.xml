@@ -21,7 +21,7 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/TestFragment"
         android:name="com.rymon.aparatdemo.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
@@ -43,9 +43,9 @@
         app:popEnterAnim="@anim/slide_in_bottom"
         app:popExitAnim="@anim/slide_out_top" />
     <fragment
-        android:id="@+id/searchFragment2"
+        android:id="@+id/mainHomeFragment"
         android:name="com.rymon.aparatdemo.ui.mainHome.MainHomeFragment"
-        android:label="SearchFragment2" >
+        android:label="mainHome">
         <action
             android:id="@+id/action_searchFragment2_to_detailsFragment"
             app:destination="@id/detailsFragment" />

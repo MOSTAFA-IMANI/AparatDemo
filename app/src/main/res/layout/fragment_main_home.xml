@@ -6,7 +6,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.search.SearchFragment">
+        tools:context=".ui.search.SearchFragment"
+        android:background="?colorPrimaryVariant">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -31,7 +32,9 @@
             android:layout_centerHorizontal="true"
             android:text="Results could not be loaded"
             android:visibility="gone"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="@style/TextAppearanceMainHome"
+            />
 
         <Button
             android:id="@+id/button_retry"
@@ -49,7 +52,8 @@
             android:layout_centerInParent="true"
             android:text="No results found for this query"
             android:visibility="gone"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="@style/TextAppearanceMainHome"/>
 
     </RelativeLayout>
 </layout>

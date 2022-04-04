@@ -12,7 +12,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:text="teeeeeeeeeeest"
-                  android:textColor="@color/blue_dark"/>
+                  />
 
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/recycler_view"
