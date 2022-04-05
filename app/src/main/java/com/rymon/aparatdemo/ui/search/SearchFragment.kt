@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.rymon.aparatdemo.R
 import com.rymon.aparatdemo.data.search.Videobysearch
@@ -15,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search),
     SearchVideoAdapter.OnItemClickListener {
+
+    private val args: SearchFragmentArgs  by navArgs()
 
     private val viewModel by viewModels<SearchViewModel>()
 
@@ -40,7 +43,6 @@ class SearchFragment : Fragment(R.layout.fragment_search),
         }
 
 
-
         adapter.addLoadStateListener { loadState ->
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
@@ -62,6 +64,11 @@ class SearchFragment : Fragment(R.layout.fragment_search),
         }
 
         setHasOptionsMenu(true)
+
+
+        args.query?.let {
+            viewModel.searchVideos(args.query!!)
+        }
     }
 
     override fun onItemClick(video: Videobysearch) {

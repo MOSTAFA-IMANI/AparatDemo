@@ -5,14 +5,15 @@
         android:id="@+id/TestFragment"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/bottom_nav_test" />
+    <item
+        android:id="@+id/mainHomeFragment"
+        android:icon="@drawable/ic_user"
+        android:title="@string/bottom_nav_Home" />
 
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
         android:title="@string/bottom_nave_search" />
-    <item
-        android:id="@+id/mainHomeFragment"
-        android:icon="@drawable/ic_user"
-        android:title="@string/bottom_nav_Home" />
+
 
 </menu>

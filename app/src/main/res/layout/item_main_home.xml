@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="?colorSecondary"
+            android:background="?colorSecondaryVariant"
             >
 
             <TextView
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/image_view"
-                android:layout_gravity="right"
+                android:layout_gravity="center"
                 android:layout_margin="@dimen/item_main_home_text_group_margin"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
@@ -38,7 +38,8 @@
                 android:layout_margin="@dimen/item_main_home_horizontal_recycler_margin"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_video_main_home" />
+                tools:listitem="@layout/item_video_main_home"
+                app:reverseLayout="true"/>
 
 
         </LinearLayout>

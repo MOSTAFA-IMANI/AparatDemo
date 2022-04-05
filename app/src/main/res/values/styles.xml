@@ -4,6 +4,15 @@
     <style name="TextAppearanceMainHome">
         <item name="android:textColor">?colorOnPrimary</item>
         <item name="android:textSize">16sp</item>
-
     </style>
+    <style name="BottomNavigation">
+        <item name="android:background">?colorPrimary</item>
+        <item name="itemBackground">@drawable/bottom_nav_item_bg</item>
+        <item name="itemIconTint">@drawable/bottom_nav_item_tint</item>
+        <item name="itemTextColor">@drawable/bottom_nav_item_tint</item>
+        <item name="paddingStart">@dimen/bottom_navigation_padding</item>
+        <item name="paddingEnd">@dimen/bottom_navigation_padding</item>
+    </style>
+
+    <dimen name="bottom_navigation_padding">6dp</dimen>
 </resources>

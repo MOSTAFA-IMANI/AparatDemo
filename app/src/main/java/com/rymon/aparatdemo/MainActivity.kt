@@ -1,10 +1,21 @@
 package com.rymon.aparatdemo
 
+import android.app.SearchManager
+import android.content.Context
+import android.database.Cursor
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AutoCompleteTextView
+import android.widget.CursorAdapter
+import android.widget.SimpleCursorAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -12,6 +23,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.rymon.aparatdemo.application.AparatDemoApplication
 import com.rymon.aparatdemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,17 +45,18 @@ class MainActivity : AppCompatActivity() {
         setupInitializeToolbar()
         setupInitializeBottomNavigation()
 
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding.apply {
-            userButton.setOnClickListener{
-                val action = NavGraphDirections.actionGlobalLoginFragment()
-                navController.navigate(action)
+            /* userButton.setOnClickListener{
+                 val action = NavGraphDirections.actionGlobalLoginFragment()
+                 navController.navigate(action)
 
-            }
+             }*/
         }
 
     }
+
 
     private fun setupInitializeBottomNavigation() {
 
@@ -63,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.TestFragment, R.id.searchFragment,R.id.mainHomeFragment)
+            setOf(R.id.TestFragment,R.id.searchFragment, R.id.mainHomeFragment)
         )
 
 
@@ -79,6 +92,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
+
+        /**
+         *We can have below approach but it's not shoiwing animate and also
+         * we can't call login from any where else
+         */
+//        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
+        /**
+         *intstead of thet we use a global destination
+         */
+        return when (item.itemId) {
+            R.id.loginFragment -> {
+                val action = NavGraphDirections.actionGlobalLoginFragment()
+                navController.navigate(action)
+                true
+            }
+            R.id.searchFragment -> {
+                val searchView = item.actionView as SearchView
+
+
+                searchView.setOnQueryTextListener(object : OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String): Boolean {
+                        Log.i("well", " Last: $query")
+                        val action = NavGraphDirections.actionGlobalSearchFragment(query)
+                        navController.navigate(action)
+                        return true
+
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        Log.i("well", " this worked : $newText")
+                        return true
+                    }
+                })
+                true
+            }
+            else -> {
+                item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
+            }
+        }
+
+
     }
+
 }

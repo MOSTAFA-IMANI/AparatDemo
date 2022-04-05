@@ -7,6 +7,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+
 android {
     compileSdk 32
 
@@ -50,6 +51,7 @@ dependencies {
     // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"

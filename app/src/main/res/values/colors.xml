@@ -21,9 +21,11 @@
     <color name="primaryNightColor">#212121</color>
     <color name="primaryNightLightColor">#484848</color>
     <color name="primaryNightDarkColor">#000000</color>
-    <color name="secondaryNightColor">#3e2723</color>
-    <color name="secondaryNightLightColor">#6a4f4b</color>
-    <color name="secondaryNightDarkColor">#1b0000</color>
+    <color name="secondaryNightColor">#37474f</color>
+    <color name="secondaryNightLightColor">#62727b</color>
+    <color name="secondaryNightDarkColor">#102027</color>
     <color name="primaryNightTextColor">#ffffff</color>
     <color name="secondaryNightTextColor">#ffffff</color>
+
+
 </resources>

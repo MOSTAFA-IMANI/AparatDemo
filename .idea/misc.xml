@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/bottom_menu_selected.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/bottom_menu_unselected.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/bottom_nav_item_tint.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/bottom_round_corner.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/buttom_menu_selected.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/buttom_menu_unselected.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/gradient.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/drawable/item_video_shape.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Mostafa/AndroidStudioProjects/AparatDemo/app/src/main/res/layout/activity_main.xml" value="0.264" />
