@@ -72,7 +72,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
     }
 
     override fun onItemClick(video: Videobysearch) {
-        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment()
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(video.frame)
         findNavController().navigate(action)
     }
 /*

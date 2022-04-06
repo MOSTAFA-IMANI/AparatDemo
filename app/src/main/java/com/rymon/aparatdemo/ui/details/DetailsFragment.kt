@@ -8,18 +8,30 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rymon.aparatdemo.R
 import com.rymon.aparatdemo.databinding.FragmentDetailsBinding
+import com.rymon.aparatdemo.ui.search.SearchFragmentArgs
+import com.rymon.aparatdemo.utils.slideVisibility
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
-//    private val args by navArgs<>()
+    private val args: DetailsFragmentArgs by navArgs()
+    private var videoFrameUrl: String? = null
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var toolBar: Toolbar
 
     override fun onDetach() {
         super.onDetach()
         requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
+        toolBar.slideVisibility(View.VISIBLE,1500)
+        bottomNavigationView.slideVisibility(View.VISIBLE,1700)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,8 +39,23 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         val binding = FragmentDetailsBinding.bind(view)
 
+        args.videoFrame?.let { videoFrame ->
+            videoFrameUrl = videoFrame
+        }
         binding.apply {
-            loadVideo(webView,"https://www.aparat.com/video/video/embed/videohash/rzKus/vt/frame")
+            videoFrameUrl?.let {
+                try {
+                    bottomNavigationView = activity?.findViewById(R.id.bottom_nav)!!
+                    toolBar = activity?.findViewById(R.id.toolbar)!!
+
+                } catch (e: Exception) {
+                    //can't find
+                }
+                loadVideo(webView, videoFrameUrl!!)
+                toolBar.slideVisibility(View.GONE,1500)
+                bottomNavigationView.slideVisibility(View.GONE,1500)
+            }
+//            showError()
         }
 /*
         binding.apply {
@@ -79,7 +106,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     */
     }
-    private fun loadVideo(webView:WebView,vid_url:String) {
+
+    private fun showError() {
+        TODO("Not yet implemented")
+    }
+
+    private fun loadVideo(webView: WebView, vid_url: String) {
 
         webView.webViewClient = WebViewClient()
         webView.settings.javaScriptEnabled = true
