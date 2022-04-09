@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         setupInitializeToolbar()
         setupInitializeBottomNavigation()
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding.apply {
             /* userButton.setOnClickListener{

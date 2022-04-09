@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rymon.aparatdemo.data.main.Data
 import com.rymon.aparatdemo.databinding.ItemMainHomeBinding
 
-class MainHomeAdapter(private val listener: OnItemClickListener) :
-    PagingDataAdapter<Data, MainHomeAdapter.VideoViewHolder>(PHOTO_COMPARATOR) {
+class MainHomeAdapter(private val listener: MainHomeFragment) :
+    PagingDataAdapter<Data, MainHomeAdapter.VideoViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding =
@@ -29,7 +29,7 @@ class MainHomeAdapter(private val listener: OnItemClickListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener {
+            /*binding.root.setOnClickListener {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val item = getItem(position)
@@ -37,14 +37,14 @@ class MainHomeAdapter(private val listener: OnItemClickListener) :
                         listener.onItemClick(item)
                     }
                 }
-            }
+            }*/
         }
 
         fun bind(data: Data) {
             binding.apply {
 
                val horizontalVideoData =  data.relationships.video.data
-                val adapter = MainHomeVideoHorizontalAdapter(horizontalVideoData)
+                val adapter = MainHomeVideoHorizontalAdapter(horizontalVideoData, listener = listener)
 
                 recyclerViewHorizontal.adapter = adapter
                 textViewCategoryTitle.text = data.attributes.title.text
@@ -71,7 +71,7 @@ class MainHomeAdapter(private val listener: OnItemClickListener) :
     }
 
     companion object {
-        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<Data>() {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<Data>() {
             override fun areItemsTheSame(oldItem: Data, newItem: Data) =
                 oldItem.id == newItem.id
 

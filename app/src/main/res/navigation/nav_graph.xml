@@ -58,7 +58,7 @@
         android:name="com.rymon.aparatdemo.ui.mainHome.MainHomeFragment"
         android:label="mainHome">
         <action
-            android:id="@+id/action_searchFragment2_to_detailsFragment"
+            android:id="@+id/action_mainHomeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
     <action
@@ -70,4 +70,8 @@
         app:popExitAnim="@anim/slide_out_top"
         app:popUpTo="@id/mainHomeFragment"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.rymon.aparatdemo.ui.catogory.CategoryFragment"
+        android:label="CategoryFragment" />
 </navigation>

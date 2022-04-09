@@ -5,7 +5,7 @@ data class HomeVideoIncluded(
     val id: String,
     val type: String
 ){
-    data class IncludedAttributes(
+    data class IncludedAttributes (
         val `360d`: String,
         val autoplay: Boolean,
         val big_poster: String,
@@ -44,8 +44,8 @@ data class HomeVideoIncluded(
         val username: String,
         val videovisit: Any,
         val visit_cnt: String,
-        val visit_cnt_int: String,
-        val watch: Watch
+        val visit_cnt_int: String
+
     )
     data class Like(
         val cnt: String

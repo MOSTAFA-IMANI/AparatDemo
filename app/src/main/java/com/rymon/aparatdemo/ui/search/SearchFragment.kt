@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.rymon.aparatdemo.R
-import com.rymon.aparatdemo.data.search.Videobysearch
+import com.rymon.aparatdemo.data.models.Video
 import com.rymon.aparatdemo.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,8 +71,8 @@ class SearchFragment : Fragment(R.layout.fragment_search),
         }
     }
 
-    override fun onItemClick(video: Videobysearch) {
-        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(video.frame)
+    override fun onItemClick(video: Video) {
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(video.frameUrl)
         findNavController().navigate(action)
     }
 /*

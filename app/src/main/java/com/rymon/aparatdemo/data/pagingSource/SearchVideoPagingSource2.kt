@@ -23,7 +23,7 @@ private const val PER_PAGE_COUNT = 60
         return try {
 
         val response = aparatApi.searchVideos2(position)
-            val metaData = response.data
+            val metaData = response.mainData
             val includedVideo = response.included
             val nextLinks = response.links
             val nextLinkPart = nextLinks?.getNextLinkPart() ?:""

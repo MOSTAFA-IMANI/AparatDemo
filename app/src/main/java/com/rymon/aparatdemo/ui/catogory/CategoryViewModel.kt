@@ -1,42 +1,41 @@
-package com.rymon.aparatdemo.ui.home
+package com.rymon.aparatdemo.ui.catogory
 
 import androidx.hilt.Assisted
 import androidx.lifecycle.*
 import androidx.paging.cachedIn
 import com.rymon.aparatdemo.data.AparatRepository
+import com.rymon.aparatdemo.data.category.Category
 import com.rymon.aparatdemo.data.home.HomeVideoIncluded
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class CategoryViewModel @Inject constructor(
     private val repository: AparatRepository
 ) : ViewModel() {
 
-
     val errorMessage = MutableLiveData<String>()
-    val movieList = MutableLiveData<List<HomeVideoIncluded>>()
+    val movieList = MutableLiveData<List<Category>>()
     var job: Job? = null
-    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
     val loading = MutableLiveData<Boolean>()
 
     fun getAllVideoIncludedWithoutPaging() {
-        job = CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getHomeResultWithoutPaging()
+        job = viewModelScope.launch {
+            val response = repository.getAllCategory()
             withContext(Dispatchers.Main) {
-
                 if (response.isSuccessful) {
-                    movieList.postValue(response.body()?.included)
+                    movieList.postValue(response.body()?.categories)
                     loading.value = false
                 } else {
-                    onError("Error : ${response.message()} ")
+                    exceptionHandler
+//                    onError("Error : ${response.message()} ")
                 }
             }
         }
-
     }
 
     private fun onError(message: String) {

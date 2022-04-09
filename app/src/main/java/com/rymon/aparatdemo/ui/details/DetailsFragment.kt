@@ -30,8 +30,13 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onDetach()
         requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
-        toolBar.slideVisibility(View.VISIBLE,1500)
-        bottomNavigationView.slideVisibility(View.VISIBLE,1700)
+        try {
+            toolBar.slideVisibility(View.VISIBLE,1500)
+            bottomNavigationView.slideVisibility(View.VISIBLE,1700)
+
+        }catch (e:Exception){
+
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

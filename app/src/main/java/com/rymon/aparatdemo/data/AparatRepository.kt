@@ -47,6 +47,8 @@ class AparatRepository @Inject constructor(private val aparatApi: AparatApi) {
 
       suspend fun getHomeResultWithoutPaging()= aparatApi.getHomeVideo()
 
+    suspend fun getAllCategory() = aparatApi.getAllCategory()
+
 
 
 }

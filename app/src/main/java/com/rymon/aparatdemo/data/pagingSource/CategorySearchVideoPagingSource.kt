@@ -9,20 +9,22 @@ import java.io.IOException
 
 
 private const val STARTING_PAGE_OFFSET = 0
+private const val STARTING_PAGE_UNIQUE_ID = 0
 private const val PER_PAGE_COUNT = 10
 
 
 
- class SearchVideoPagingSource(
+ class CategorySearchVideoPagingSource(
     private val aparatApi: AparatApi,
-    private val query: String
+    private val query: Int
 ) : PagingSource<Int, Video>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Video> {
         val position = params.key ?: STARTING_PAGE_OFFSET
+        val uniqueId = params.key ?: STARTING_PAGE_UNIQUE_ID
         return try {
 
-            val response = aparatApi.searchVideos(query, PER_PAGE_COUNT,position)
+            val response = aparatApi.searchVideosByCategory(query, PER_PAGE_COUNT,position,uniqueId)
             val aparatVideos = response.searchedVideo
             val ui = response.pagingHelperParameters
 

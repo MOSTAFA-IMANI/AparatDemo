@@ -8,13 +8,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.rymon.aparatdemo.R
-import com.rymon.aparatdemo.data.main.Data
+import com.rymon.aparatdemo.data.main.DataX
 import com.rymon.aparatdemo.databinding.FragmentMainHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainHomeFragment : Fragment(R.layout.fragment_main_home),
-    MainHomeAdapter.OnItemClickListener {
+    MainHomeVideoHorizontalAdapter.OnItemClickListener {
 
     private val viewModel by viewModels<MainHomeViewModel>()
 
@@ -106,8 +106,8 @@ class MainHomeFragment : Fragment(R.layout.fragment_main_home),
         _binding = null
     }
 
-    override fun onItemClick(video: Data) {
-        val action = MainHomeFragmentDirections.actionSearchFragment2ToDetailsFragment()
+    override fun onItemClick(video: DataX) {
+        val action = MainHomeFragmentDirections.actionMainHomeFragmentToDetailsFragment(video.attributes?.frame)
         findNavController().navigate(action)
     }
 }

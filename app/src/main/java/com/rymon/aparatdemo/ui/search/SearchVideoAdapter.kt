@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.rymon.aparatdemo.R
-import com.rymon.aparatdemo.data.search.Videobysearch
+import com.rymon.aparatdemo.data.models.Video
 import com.rymon.aparatdemo.databinding.ItemSearchedVideoBinding
 
 class SearchVideoAdapter(private val listener: OnItemClickListener) :
-    PagingDataAdapter<Videobysearch, SearchVideoAdapter.VideoViewHolder>(VIDEO_COMPARATOR) {
+    PagingDataAdapter<Video, SearchVideoAdapter.VideoViewHolder>(VIDEO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding =
@@ -44,30 +44,30 @@ class SearchVideoAdapter(private val listener: OnItemClickListener) :
             }
         }
 
-        fun bind(video: Videobysearch) {
+        fun bind(video: Video) {
             binding.apply {
                 Glide.with(itemView)
-                    .load(video.big_poster)
+                    .load(video.bigPosterUrl)
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_error)
                     .into(imageView)
 
-                textViewUserName.text = video.sender_name
+                textViewUserName.text = video.senderName
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(video: Videobysearch)
+        fun onItemClick(video: Video)
     }
 
     companion object {
-        private val VIDEO_COMPARATOR = object : DiffUtil.ItemCallback<Videobysearch>() {
-            override fun areItemsTheSame(oldItem: Videobysearch, newItem: Videobysearch) =
+        private val VIDEO_COMPARATOR = object : DiffUtil.ItemCallback<Video>() {
+            override fun areItemsTheSame(oldItem: Video, newItem: Video) =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Videobysearch, newItem: Videobysearch) =
+            override fun areContentsTheSame(oldItem: Video, newItem: Video) =
                 oldItem == newItem
         }
     }

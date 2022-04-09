@@ -1,6 +1,6 @@
 package com.rymon.aparatdemo.data.search
 
-data class Ui(
+data class AparatPagingHelper(
     val pagingBack: String?,
     val pagingForward: String?
 ) {
@@ -21,5 +21,8 @@ data class Ui(
              parsUrl(pagingForward.toString())
         else
             null
+    }
+    private fun getBetweenString(urlString: String , prefix:String,suffix:String){
+        val result = urlString.substringAfter(prefix).substringBefore(suffix)
     }
 }

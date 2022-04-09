@@ -3,4 +3,7 @@
     <string name="bottom_nav_Home">Home</string>
     <string name="bottom_nave_search">Search</string>
     <string name="bottom_nav_test">Test</string>
+    <string name="can_not_load">Results could not be loaded</string>
+    <string name="retry">Retry</string>
+    <string name="not_found">No results found for this query</string>
 </resources>

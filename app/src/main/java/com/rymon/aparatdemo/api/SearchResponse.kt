@@ -1,10 +1,13 @@
 package com.rymon.aparatdemo.api
 
-import com.rymon.aparatdemo.data.search.Ui
-import com.rymon.aparatdemo.data.search.Videobysearch
+import com.google.gson.annotations.SerializedName
+import com.rymon.aparatdemo.data.search.AparatPagingHelper
+import com.rymon.aparatdemo.data.models.Video
 
 
 data class SearchResponse(
-    val ui: Ui,
-    val videobysearch: List<Videobysearch>?
+    @SerializedName("ui")
+    val pagingHelperParameters: AparatPagingHelper,
+    @SerializedName("videobysearch")
+    val searchedVideo: List<Video>?
 )

@@ -11,7 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.rymon.aparatdemo.data.main.DataX
 
-class MainHomeVideoHorizontalAdapter(private val mList: List<DataX>) :
+class MainHomeVideoHorizontalAdapter(private val mList: List<DataX>,
+                                     private val listener: MainHomeVideoHorizontalAdapter.OnItemClickListener) :
     RecyclerView.Adapter<MainHomeVideoHorizontalAdapter.ViewHolder>() {
 
     // create new views
@@ -41,6 +42,17 @@ class MainHomeVideoHorizontalAdapter(private val mList: List<DataX>) :
 
         holder.textView.text = videoData.attributes?.title ?: "null"
 
+        holder.itemView.setOnClickListener {
+
+                    if (it != null) {
+                        listener.onItemClick(videoData)
+                    }
+
+            }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(video: DataX)
     }
 
     // return the number of the items in the list

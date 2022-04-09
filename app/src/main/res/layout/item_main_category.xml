@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center">
+    <data>
+        <variable name="category" type="com.rymon.aparatdemo.data.category.Category"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/item_main_category_card_margin"
+        android:layoutDirection="rtl"
+        app:cardCornerRadius="@dimen/item_main_category_card_radius">
+
+        <RelativeLayout
+            android:id="@+id/item_main_category_holder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_main_category_card_height"
+            tools:background="@drawable/test_category_main_pattern">
+
+
+            <TextView
+                android:id="@+id/text_view_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/item_main_category_text_margin"
+                android:layout_marginTop="@dimen/item_main_category_text_margin"
+                android:layout_marginEnd="@dimen/item_main_category_text_margin"
+                android:layout_marginBottom="@dimen/item_main_category_text_margin"
+                android:gravity="center"
+                android:maxLines="1"
+                android:shadowColor="#000"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="100"
+                android:text="@{category.name}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="CategoryName" />
+
+            <TextView
+                android:id="@+id/text_view_video_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/item_main_category_text_margin"
+                android:background="@drawable/gradient_right"
+                android:drawablePadding="5dp"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@{category.videoCnt}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:drawableStartCompat="@android:drawable/presence_video_online"
+                tools:text="12250" />
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="@dimen/item_main_category_icon_width"
+                android:layout_height="@dimen/item_main_category_icon_height"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/item_main_category_icon_margin"
+                android:layout_marginTop="@dimen/item_main_category_icon_margin"
+                android:layout_marginEnd="@dimen/item_main_category_icon_margin"
+                android:layout_marginBottom="@dimen/item_main_category_icon_margin"
+                tools:src="@drawable/test_category_main_pattern_icon" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

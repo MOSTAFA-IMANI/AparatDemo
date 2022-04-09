@@ -30,30 +30,29 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/button_retry"
             android:layout_centerHorizontal="true"
-            android:text="Results could not be loaded"
-            android:visibility="gone"
-            tools:visibility="visible"
             style="@style/TextAppearanceMainHome"
-            />
+            android:text="@string/can_not_load"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/button_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Retry"
+            android:text="@string/retry"
             android:visibility="gone"
             tools:visibility="visible" />
 
         <TextView
             android:id="@+id/text_view_empty"
+            style="@style/TextAppearanceMainHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="No results found for this query"
+            android:text="@string/not_found"
             android:visibility="gone"
-            tools:visibility="visible"
-            style="@style/TextAppearanceMainHome"/>
+            tools:visibility="visible" />
 
     </RelativeLayout>
 </layout>
