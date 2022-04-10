@@ -25,6 +25,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.rymon.aparatdemo.application.AparatDemoApplication
 import com.rymon.aparatdemo.databinding.ActivityMainBinding
+import com.rymon.aparatdemo.utils.findParameterInUrl
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() {
 
              }*/
         }
+        val url =  "https://www.aparat.com//etc/api/videobysearch/text/perspolis/perpage/10/curoffset/9"
+
+        url.findParameterInUrl("curoffset")
 
     }
 

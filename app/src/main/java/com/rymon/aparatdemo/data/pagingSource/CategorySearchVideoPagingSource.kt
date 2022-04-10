@@ -28,8 +28,8 @@ private const val PER_PAGE_COUNT = 10
             val aparatVideos = response.searchedVideo
             val ui = response.pagingHelperParameters
 
-            val backPageOffset = ui.getBackPage()
-            val forwardPageOffset = ui.getForwardPage()
+            val backPageOffset = ui.getBackPageOffset()
+            val forwardPageOffset = ui.getForwardPageOffset()
             if(aparatVideos!=null){
 
                 LoadResult.Page(

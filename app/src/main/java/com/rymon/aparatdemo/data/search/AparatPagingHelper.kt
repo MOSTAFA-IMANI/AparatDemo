@@ -1,12 +1,18 @@
 package com.rymon.aparatdemo.data.search
 
+import com.rymon.aparatdemo.utils.findParameterInUrl
+
 data class AparatPagingHelper(
     val pagingBack: String?,
     val pagingForward: String?
 ) {
-    fun getBackPage(): Int? {
+    fun getBackPageOffset(): Int? {
         return if(pagingBack!=null && pagingBack!="")
-           parsUrl(pagingBack.toString())
+           try {
+               pagingBack.findParameterInUrl("curoffset")?.toInt()
+           }catch (e:Exception){
+               null
+           }
          else
             null
     }
@@ -16,13 +22,16 @@ data class AparatPagingHelper(
     }
 
 
-    fun getForwardPage(): Int? {
+    fun getForwardPageOffset(): Int? {
         return if(pagingForward!=null && pagingForward!="")
-             parsUrl(pagingForward.toString())
+            try {
+
+                pagingForward.findParameterInUrl("curoffset")?.toInt()
+            }catch (e:Exception){
+                null
+            }
         else
             null
     }
-    private fun getBetweenString(urlString: String , prefix:String,suffix:String){
-        val result = urlString.substringAfter(prefix).substringBefore(suffix)
-    }
+
 }
