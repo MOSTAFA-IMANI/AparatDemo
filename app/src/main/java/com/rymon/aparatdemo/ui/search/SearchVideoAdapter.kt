@@ -53,7 +53,7 @@ class SearchVideoAdapter(private val listener: OnItemClickListener) :
                     .error(R.drawable.ic_error)
                     .into(imageView)
 
-                textViewUserName.text = video.senderName
+                binding.video = video
             }
         }
     }

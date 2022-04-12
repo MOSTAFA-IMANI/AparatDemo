@@ -15,6 +15,9 @@
     <dimen name="item_main_category_text_margin">6dp</dimen>
     <dimen name="item_main_category_card_radius">8dp</dimen>
     <dimen name="item_main_category_card_margin">15dp</dimen>
-    <dimen name="item_sub_category_username_text_size">14sp</dimen>
+    <dimen name="item_sub_category_username_text_size">12sp</dimen>
     <dimen name="item_sub_category_card_margin">6dp</dimen>
+    <dimen name="item_video_text_height">25dp</dimen>
+    <dimen name="item_video_text_title_width">200dp</dimen>
+    <dimen name="item_sub_category_send_date_text_size">12sp</dimen>
 </resources>

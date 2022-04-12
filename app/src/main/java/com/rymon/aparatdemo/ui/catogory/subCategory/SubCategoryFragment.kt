@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.rymon.aparatdemo.R
@@ -89,6 +90,7 @@ class SubCategoryFragment : Fragment(R.layout.fragment_category_sub),
     }
 
     override fun onItemClick(video: Video) {
-        TODO("Not yet implemented")
+        val action =  SubCategoryFragmentDirections.actionSubCategoryFragmentToDetailsFragment(video.frameUrl)
+        findNavController().navigate(action)
     }
 }

@@ -1,17 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+
+        <import
+            alias="ExtensionFunctions"
+            type="com.rymon.aparatdemo.utils.ExtensionsKt" />
+
+        <variable
+            name="video"
+            type="com.rymon.aparatdemo.data.models.Video" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="250dp"
+        android:layoutDirection="rtl">
 
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/text_view_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_video_text_height"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/item_main_category_text_margin"
+            android:layout_marginTop="@dimen/item_main_category_text_margin"
+            android:layout_marginEnd="@dimen/item_main_category_text_margin"
+            android:layout_marginBottom="@dimen/item_main_category_text_margin"
+            android:background="@drawable/gradient_right"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="@{video.username}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/item_sub_category_username_text_size"
+            app:drawableStartCompat="@drawable/ic_user"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/text_view_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_video_text_height"
+            android:layout_below="@id/text_view_user_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/item_main_category_text_margin"
+            android:layout_marginTop="@dimen/item_main_category_text_margin"
+            android:layout_marginEnd="@dimen/item_main_category_text_margin"
+            android:layout_marginBottom="@dimen/item_main_category_text_margin"
+            android:background="@drawable/gradient_right"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="@{ExtensionFunctions.convertSecondDuration(video.duration)}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/item_sub_category_username_text_size"
+            app:drawableStartCompat="@android:drawable/ic_menu_recent_history"
+            tools:text="60 ثانیه" />
+
+        <TextView
+            android:id="@+id/text_view_visit_count"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_video_text_height"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/item_main_category_text_margin"
+            android:layout_marginTop="@dimen/item_main_category_text_margin"
+            android:layout_marginEnd="@dimen/item_main_category_text_margin"
+            android:layout_marginBottom="@dimen/item_main_category_text_margin"
+            android:background="@drawable/gradient_left"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="5dp"
+            android:text="@{String.valueOf(video.visitCount)}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/item_sub_category_username_text_size"
+            app:drawableEndCompat="@android:drawable/ic_menu_view"
+            tools:text="122214" />
+
+        <TextView
+            android:id="@+id/text_view_send_date"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_video_text_height"
+            android:layout_below="@id/text_view_visit_count"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/item_main_category_text_margin"
+            android:layout_marginTop="@dimen/item_main_category_text_margin"
+            android:layout_marginEnd="@dimen/item_main_category_text_margin"
+            android:layout_marginBottom="@dimen/item_main_category_text_margin"
+            android:background="@drawable/gradient_left"
+            android:drawablePadding="2dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="5dp"
+            android:text="@{video.persianSendingDate}"
+            android:textColor="#fff"
+            android:textSize="@dimen/item_sub_category_send_date_text_size"
+            app:drawableEndCompat="@android:drawable/ic_menu_my_calendar"
+            tools:text="21 فروردین 1401" />
 
         <View
             android:layout_width="match_parent"
@@ -20,18 +123,21 @@
             android:background="@drawable/gradient" />
 
         <TextView
-            android:id="@+id/text_view_user_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/image_view"
-            android:layout_margin="8dp"
-            android:drawablePadding="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
+            android:text="@{video.title}"
             android:textColor="#fff"
-            app:drawableStartCompat="@drawable/ic_user"
-            tools:text="username" />
+            tools:text=" عنوان فارسی برای یک فیلم در  اینجا قرار میگیرد  " />
+
 
     </RelativeLayout>
 </layout>

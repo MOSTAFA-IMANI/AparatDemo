@@ -69,8 +69,8 @@
 
         <TextView
             android:id="@+id/text_view_title"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/item_video_text_title_width"
+            android:layout_height="@dimen/item_video_text_height"
             android:layout_alignBottom="@id/image_view"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -81,7 +81,7 @@
             android:maxLines="1"
             android:text="@{video.title}"
             android:textColor="#fff"
-            tools:text="titleName Video" />
+            tools:text="عنوان فارسی برای یک فیلم در اینجا قرار " />
 
         <TextView
             android:id="@+id/text_view_send_date"
