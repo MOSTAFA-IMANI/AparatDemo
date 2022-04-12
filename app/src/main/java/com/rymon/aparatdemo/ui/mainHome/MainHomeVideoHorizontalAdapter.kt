@@ -32,7 +32,7 @@ class MainHomeVideoHorizontalAdapter(private val mList: List<DataX>,
 
         // sets the image to the imageview from our itemHolder class
         Glide.with(holder.itemView)
-            .load(videoData.attributes?.big_poster)
+            .load(videoData.attributes?.small_poster)
             .centerCrop()
             .transition(DrawableTransitionOptions.withCrossFade())
             .error(R.drawable.ic_error)

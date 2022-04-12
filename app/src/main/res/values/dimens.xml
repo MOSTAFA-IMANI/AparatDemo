@@ -14,5 +14,7 @@
     <dimen name="item_main_category_icon_margin">5dp</dimen>
     <dimen name="item_main_category_text_margin">6dp</dimen>
     <dimen name="item_main_category_card_radius">8dp</dimen>
-    <dimen name="item_main_category_card_margin">10dp</dimen>
+    <dimen name="item_main_category_card_margin">15dp</dimen>
+    <dimen name="item_sub_category_username_text_size">14sp</dimen>
+    <dimen name="item_sub_category_card_margin">6dp</dimen>
 </resources>

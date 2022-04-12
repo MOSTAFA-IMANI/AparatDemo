@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/categoryFragment"
+        android:id="@+id/mainCategoryFragment"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/bottom_nav_test" />
+        android:title="@string/bottom_nav_category" />
     <item
         android:id="@+id/mainHomeFragment"
         android:icon="@drawable/ic_user"

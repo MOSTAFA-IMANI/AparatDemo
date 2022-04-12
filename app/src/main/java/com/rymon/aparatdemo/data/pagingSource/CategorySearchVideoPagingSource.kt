@@ -3,7 +3,9 @@ package com.rymon.aparatdemo.data.pagingSource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rymon.aparatdemo.api.AparatApi
+import com.rymon.aparatdemo.data.models.UrlPathHolder
 import com.rymon.aparatdemo.data.models.Video
+import com.rymon.aparatdemo.data.search.AparatPagingHelper
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -16,26 +18,26 @@ private const val PER_PAGE_COUNT = 10
 
  class CategorySearchVideoPagingSource(
     private val aparatApi: AparatApi,
-    private val query: Int
-) : PagingSource<Int, Video>() {
+    private val categoryId: Int
+) : PagingSource<UrlPathHolder, Video>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Video> {
-        val position = params.key ?: STARTING_PAGE_OFFSET
-        val uniqueId = params.key ?: STARTING_PAGE_UNIQUE_ID
+    override suspend fun load(params: LoadParams<UrlPathHolder>): LoadResult<UrlPathHolder, Video> {
+        val position = params.key?.getCurrentOffset() ?: STARTING_PAGE_OFFSET
+        val uniqueId = params.key?.getUniqueId() ?: STARTING_PAGE_UNIQUE_ID
         return try {
 
-            val response = aparatApi.searchVideosByCategory(query, PER_PAGE_COUNT,position,uniqueId)
-            val aparatVideos = response.searchedVideo
+            val response = aparatApi.searchVideosByCategory(categoryId, PER_PAGE_COUNT,position,uniqueId)
+            val aparatVideos = response.categoryVideo
             val ui = response.pagingHelperParameters
 
-            val backPageOffset = ui.getBackPageOffset()
-            val forwardPageOffset = ui.getForwardPageOffset()
+            val backPageOffset = UrlPathHolder(ui.pagingBack)
+            val forwardPageOffset = UrlPathHolder(ui.pagingForward)
             if(aparatVideos!=null){
 
                 LoadResult.Page(
                     data = aparatVideos,
-                    prevKey =  backPageOffset,
-                    nextKey =  forwardPageOffset
+                    prevKey =  forwardPageOffset,
+                    nextKey =  backPageOffset
                 )
             }
             else{
@@ -43,8 +45,8 @@ private const val PER_PAGE_COUNT = 10
 
                 LoadResult.Page(
                     data = emptyAparatVideo,
-                    prevKey =  backPageOffset,
-                    nextKey =  forwardPageOffset
+                    prevKey =  forwardPageOffset,
+                    nextKey =  backPageOffset
                 )
             }
         } catch (exception: IOException) {
@@ -54,7 +56,9 @@ private const val PER_PAGE_COUNT = 10
         }
     }
 
-     override fun getRefreshKey(state: PagingState<Int, Video>): Int? {
+     override fun getRefreshKey(state: PagingState<UrlPathHolder, Video>): UrlPathHolder? {
+         val a = state
+
          TODO("Not yet implemented")
      }
  }

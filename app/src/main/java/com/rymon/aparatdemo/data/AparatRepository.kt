@@ -4,8 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.rymon.aparatdemo.api.AparatApi
-import com.rymon.aparatdemo.data.home.HomeVideoIncluded
-import com.rymon.aparatdemo.data.pagingSource.HomeVideoPagingSource
+import com.rymon.aparatdemo.data.pagingSource.CategorySearchVideoPagingSource
 import com.rymon.aparatdemo.data.pagingSource.SearchVideoPagingSource
 import com.rymon.aparatdemo.data.pagingSource.SearchVideoPagingSource2
 
@@ -35,19 +34,20 @@ class AparatRepository @Inject constructor(private val aparatApi: AparatApi) {
             pagingSourceFactory = { SearchVideoPagingSource2(aparatApi) }
         ).liveData
 
-    fun getHomeResult() =
-        Pager(
-            config = PagingConfig(
-                pageSize = 6,
-                maxSize = 200,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { HomeVideoPagingSource(aparatApi) }
-        ).liveData
-
-      suspend fun getHomeResultWithoutPaging()= aparatApi.getHomeVideo()
 
     suspend fun getAllCategory() = aparatApi.getAllCategory()
+
+    fun getSubCategoryResults(categoryId: Int) =
+        Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { CategorySearchVideoPagingSource(aparatApi, categoryId) }
+        ).liveData
+
+    suspend fun getHomeResultWithoutPaging()= aparatApi.getHomeVideo()
 
 
 

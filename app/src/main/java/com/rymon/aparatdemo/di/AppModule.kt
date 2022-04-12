@@ -37,6 +37,6 @@ object AppModule {
     @Singleton
     fun provideHttpLoggingInterceptor():HttpLoggingInterceptor =
         HttpLoggingInterceptor()
-//            .setLevel(HttpLoggingInterceptor.Level.BODY)
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
 
 }

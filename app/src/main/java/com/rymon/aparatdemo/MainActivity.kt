@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.TestFragment,R.id.searchFragment, R.id.mainHomeFragment)
+            setOf(R.id.mainCategoryFragment,R.id.searchFragment, R.id.mainHomeFragment)
         )
 
 

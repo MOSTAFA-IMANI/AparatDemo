@@ -2,6 +2,6 @@ package com.rymon.aparatdemo.api
 
 import com.rymon.aparatdemo.data.category.Category
 
-data class CategoryResponse(
+data class MainCategoryResponse(
     val categories: List<Category>
 )

@@ -6,4 +6,5 @@
     <string name="can_not_load">Results could not be loaded</string>
     <string name="retry">Retry</string>
     <string name="not_found">No results found for this query</string>
+    <string name="bottom_nav_category">Category</string>
 </resources>

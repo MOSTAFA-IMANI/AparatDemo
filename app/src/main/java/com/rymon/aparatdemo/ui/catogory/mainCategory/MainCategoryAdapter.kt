@@ -1,27 +1,23 @@
-package com.rymon.aparatdemo.ui.catogory
+package com.rymon.aparatdemo.ui.catogory.mainCategory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rymon.aparatdemo.data.category.Category
 import com.rymon.aparatdemo.databinding.ItemMainCategoryBinding
 
 import android.R
-import android.widget.ImageView
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.DrawableImageViewTarget
 import android.graphics.drawable.Drawable
 import androidx.annotation.Nullable
 
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.transition.Transition
 
 
-class CategoryAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MainCategoryAdapter(private val listener: OnItemClickListener) : RecyclerView.Adapter<MainCategoryAdapter.MainViewHolder>() {
 
     var categoryList = mutableListOf<Category>()
 
@@ -61,7 +57,7 @@ class CategoryAdapter : RecyclerView.Adapter<MainViewHolder>() {
                     resource: Drawable,
                     @Nullable transition: Transition<in Drawable?>?
                 ) {
-                    holder.binding.itemMainCategoryHolder.background =resource
+                    holder.binding.itemMainCategoryHolder.background = resource
                 }
 
                 override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
@@ -72,10 +68,23 @@ class CategoryAdapter : RecyclerView.Adapter<MainViewHolder>() {
     override fun getItemCount(): Int {
         return categoryList.size
     }
-}
+
+    interface OnItemClickListener {
+        fun onItemClick(category: Category)
+
+    }
 
 
-class MainViewHolder(val binding: ItemMainCategoryBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+    inner class MainViewHolder(val binding: ItemMainCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                binding.category?.let {
+                    listener.onItemClick(binding.category!!)
+                }
 
+
+            }
+        }
+    }
 }

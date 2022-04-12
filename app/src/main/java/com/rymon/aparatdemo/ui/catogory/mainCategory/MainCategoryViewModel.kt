@@ -1,4 +1,4 @@
-package com.rymon.aparatdemo.ui.catogory
+package com.rymon.aparatdemo.ui.catogory.mainCategory
 
 import androidx.hilt.Assisted
 import androidx.lifecycle.*
@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel @Inject constructor(
+class MainCategoryViewModel @Inject constructor(
     private val repository: AparatRepository
 ) : ViewModel() {
 
@@ -23,7 +23,7 @@ class CategoryViewModel @Inject constructor(
     }
     val loading = MutableLiveData<Boolean>()
 
-    fun getAllVideoIncludedWithoutPaging() {
+    fun getAllCategories() {
         job = viewModelScope.launch {
             val response = repository.getAllCategory()
             withContext(Dispatchers.Main) {

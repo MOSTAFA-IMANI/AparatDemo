@@ -46,6 +46,7 @@ private const val PER_PAGE_COUNT = 60
     }
 
      override fun getRefreshKey(state: PagingState<String, Data>): String? {
+         val a = state
          TODO("Not yet implemented")
      }
 

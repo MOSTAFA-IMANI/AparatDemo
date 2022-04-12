@@ -71,7 +71,28 @@
         app:popUpTo="@id/mainHomeFragment"
         app:popUpToInclusive="true" />
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.rymon.aparatdemo.ui.catogory.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:id="@+id/mainCategoryFragment"
+        android:name="com.rymon.aparatdemo.ui.catogory.mainCategory.MainCategoryFragment"
+        android:label="fragment_category_main"
+        tools:layout="@layout/fragment_category_main" >
+        <action
+            android:id="@+id/action_mainCategoryFragment_to_subCategoryFragment"
+            app:destination="@id/subCategoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/subCategoryFragment"
+        android:name="com.rymon.aparatdemo.ui.catogory.subCategory.SubCategoryFragment"
+        android:label="fragment_category_sub"
+        tools:layout="@layout/fragment_category_sub" >
+        <action
+            android:id="@+id/action_subCategoryFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="categoryInfo"
+            app:argType="com.rymon.aparatdemo.data.category.Category" />
+    </fragment>
 </navigation>

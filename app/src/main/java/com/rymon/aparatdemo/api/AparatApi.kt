@@ -36,7 +36,7 @@ suspend fun searchVideos(
     ): Response<HomeResponse>
 
     @GET("categories")
-    suspend fun getAllCategory(): Response<CategoryResponse>
+    suspend fun getAllCategory(): Response<MainCategoryResponse>
 
     @GET(" categoryVideos/cat/{category_id}/perpage/{per_page}/curoffset/{curoffset}/id/{u_id}/moretype/forward")
     suspend fun searchVideosByCategory(
@@ -44,6 +44,6 @@ suspend fun searchVideos(
         @Path("per_page") perPage: Int,
         @Path("curoffset") pageOffset: Int,
         @Path("u_id") uniqueId: Int
-    ): SearchResponse
+    ): SubCategoryResponse
 
 }

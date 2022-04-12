@@ -1,4 +1,4 @@
-package com.rymon.aparatdemo.ui.search
+package com.rymon.aparatdemo.ui.catogory.subCategory
 
 import  android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,19 +9,22 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.rymon.aparatdemo.R
 import com.rymon.aparatdemo.data.models.Video
+import com.rymon.aparatdemo.databinding.FragmentSearchBinding
 import com.rymon.aparatdemo.databinding.ItemSearchedVideoBinding
+import com.rymon.aparatdemo.databinding.ItemSubCategoryBinding
 
-class SearchVideoAdapter(private val listener: OnItemClickListener) :
-    PagingDataAdapter<Video, SearchVideoAdapter.VideoViewHolder>(VIDEO_COMPARATOR) {
+class SubCategoryAdapter(private val listener: OnItemClickListener) :
+    PagingDataAdapter<Video, SubCategoryAdapter.VideoViewHolder>(VIDEO_COMPARATOR) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding =
-            ItemSearchedVideoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemSubCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return VideoViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SubCategoryAdapter.VideoViewHolder, position: Int) {
         val currentItem = getItem(position)
 
         if (currentItem != null) {
@@ -29,7 +32,7 @@ class SearchVideoAdapter(private val listener: OnItemClickListener) :
         }
     }
 
-    inner class VideoViewHolder(private val binding: ItemSearchedVideoBinding) :
+    inner class VideoViewHolder(private val binding: ItemSubCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -44,22 +47,23 @@ class SearchVideoAdapter(private val listener: OnItemClickListener) :
             }
         }
 
-        fun bind(video: Video) {
+        fun bind(currentItem: Video) {
             binding.apply {
+                binding.video = currentItem
+
                 Glide.with(itemView)
-                    .load(video.smallPosterUrl)
+                    .load(video?.smallPosterUrl)
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_error)
                     .into(imageView)
-
-                textViewUserName.text = video.senderName
             }
+
         }
     }
-
     interface OnItemClickListener {
         fun onItemClick(video: Video)
+
     }
 
     companion object {
